@@ -15,7 +15,6 @@ def update_code_and_restart():
 
 
 def push_changes_to_remote_repo():
-    print 'pushing changes to repo'
     try:
         local("git commit -am'I have changed stuff.'")
         local('git push')
@@ -24,10 +23,9 @@ def push_changes_to_remote_repo():
 
 
 def update_remote_host():
-    print 'updating remote host'
     env.warn_only = True
-    with cd('~/fabric/'):
-        run('git checkout master')
-        run('pkill -9 -f run.py')
-        run('git pull')
-        run('~/env/fabric/bin/python run.py')
+    # with cd('~/fabric/'):
+    run('echo git checkout master')
+    run('echo pkill -9 -f run.py')
+    run('echo git pull')
+    run('echo ~/env/fabric/bin/python run.py')
