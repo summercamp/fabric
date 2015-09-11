@@ -18,7 +18,7 @@ def push_changes_to_remote_repo():
     print 'pushing changes to repo'
     try:
         local("git commit -am'I have changed stuff.'")
-        local('git push origin master')
+        local('git push')
     except:
         local('echo encountered an error')
 
