@@ -16,8 +16,11 @@ def update_code_and_restart():
 
 def push_changes_to_remote_repo():
     print 'pushing changes to repo'
-    local("git commit -am'I have changed stuff.'")
-    local('git push origin master')
+    try:
+        local("git commit -am'I have changed stuff.'")
+        local('git push origin master')
+    except:
+        local('echo encountered an error')
 
 
 def update_remote_host():
