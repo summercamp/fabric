@@ -6,22 +6,6 @@ from fabric.api import run
 from fabric.api import task
 
 
-GIT_SETTINGS = {
-    'user': 'summercamp',
-    'password': 'WebInterpret13+',
-}
-
-HOSTS = {
-    'git': ['github.com/summercamp/fabric'],
-    'devil': ['s6.mydevil.net'],
-}
-
-REMOTE_CREDS = {
-    'user': 'summercamp',
-    'pass': ')FINxUyu5ZD#Yo@Xb(mj',
-}
-
-
 @task(default=True)
 def update_code_and_restart():
     execute(push_changes_to_remote_repo)
@@ -33,13 +17,14 @@ def update_code_and_restart():
 def push_changes_to_remote_repo():
     print 'pushing changes to repo'
     local("git commit -am'I have changed stuff.'")
-    local('git push')
+    local('git push origin master')
 
 
 def update_remote_host():
     print 'updating remote host'
     env.warn_only = True
     with cd('fabric'):
+        run('git checkout master')
         run('pkill -9 -f run.py')
         run('git pull')
         run('~/env/fabric/bin/python run.py')
