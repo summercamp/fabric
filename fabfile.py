@@ -26,7 +26,7 @@ def push_changes_to_remote_repo():
 def update_remote_host():
     print 'updating remote host'
     env.warn_only = True
-    with cd('fabric'):
+    with cd('~/fabric/'):
         run('git checkout master')
         run('pkill -9 -f run.py')
         run('git pull')
